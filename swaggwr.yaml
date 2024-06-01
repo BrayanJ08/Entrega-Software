@@ -1,0 +1,124 @@
+openapi: 3.0.2
+info:
+  title: Agenda de Carros API
+  description: API para gestionar carros en la agenda
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Servidor local
+
+paths:
+  /vistas/carros/:
+    get:
+      summary: Listar todos los carros
+      operationId: listarCarros
+      tags:
+        - Carros
+      responses:
+        '200':
+          description: Lista de carros
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Carro'
+
+  /vistas/carros/create:
+    get:
+      summary: Formulario para crear un nuevo carro
+      operationId: crearCarroForm
+      tags:
+        - Carros
+      responses:
+        '200':
+          description: Formulario de creación de carro
+          content:
+            text/html:
+              schema:
+                type: string
+
+  /vistas/carros/save:
+    post:
+      summary: Guardar un nuevo carro
+      operationId: guardarCarro
+      tags:
+        - Carros
+      requestBody:
+        description: Carro a guardar
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Carro'
+      responses:
+        '302':
+          description: Redirección después de guardar el carro
+
+  /vistas/carros/edit/{id}:
+    get:
+      summary: Formulario para editar un carro
+      operationId: editarCarroForm
+      tags:
+        - Carros
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID del carro a editar
+      responses:
+        '200':
+          description: Formulario de edición de carro
+          content:
+            text/html:
+              schema:
+                type: string
+        '302':
+          description: Redirección si el carro no se encuentra
+
+  /vistas/carros/delete/{id}:
+    get:
+      summary: Eliminar un carro
+      operationId: eliminarCarro
+      tags:
+        - Carros
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID del carro a eliminar
+      responses:
+        '302':
+          description: Redirección después de eliminar el carro
+
+components:
+  schemas:
+    Carro:
+      type: object
+      properties:
+        idCarro:
+          type: integer
+          description: ID del carro
+        marca:
+          type: string
+          description: Marca del carro
+        modelo:
+          type: string
+          description: Modelo del carro
+        motor:
+          type: integer
+          description: Tamaño del motor del carro
+        precio:
+          type: number
+          format: double
+          description: Precio del carro
+      required:
+        - idCarro
+        - marca
+        - modelo
+        - motor
+        - precio

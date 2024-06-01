@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/plantilla/template::head">
+</head>
+<body>
+    <header th:replace="/plantilla/template::header"></header>
+    
+    <!--  CONTENIDO -->
+    <article th:replace="/plantilla/template::article" ></article>
+    
+    <!-- CREAR EL FORMULARIO PARA INGRESAR LOS DATOS -->
+    <div>
+        <form th:action="@{/vistas/carros/save}" th:object="${carro}" method="post">  
+            <div>
+                <label for="codigo">Identificación:</label> <br>
+                <input type="text" id="codigo" th:field="*{idCarro}" placeholder="Ingrese Documento de Identidad">               
+            </div>
+            <div>
+                <label for="marca">Marca del carro:</label><br> 
+                <input type="text" id="marca" th:field="*{marca}" placeholder="Ingrese la marca"> 
+            </div>
+            <div>
+                <label for="modelo">Modelo del carro:</label> <br>
+                <input type="text" id="modelo" th:field="*{modelo}" placeholder="Ingrese el modelo"> 
+            </div>
+            <div>
+                <label for="motor">Motor del carro:</label> <br>
+                <input type="text" id="motor" th:field="*{motor}" placeholder="Ingrese el motor">
+            </div>
+            <div>
+                <label for="precio">Precio del carro:</label> <br>
+                <input type="text" id="precio" th:field="*{precio}" placeholder="Ingrese el precio">
+            </div>
+            <br />
+            <div>
+                <input type="submit" value="Guardar" id="submit" name="submit"/>
+            </div>
+        </form>
+    </div>
+    
+    <!-- CIERRE DEL FORMULARIO -->
+    
+    <footer th:replace="/plantilla/template::footer"></footer>
+</body>
+</html>

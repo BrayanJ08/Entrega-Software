@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/plantilla/template::head">
+</head>
+<body>
+    <header th:replace="/plantilla/template::header"></header>
+    
+    <!--  CONTENIDO -->
+    <article th:replace="/plantilla/template::article"></article>
+    <div>
+
+        <h3>Carros Almacenados</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Código</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Modelo</th>
+                    <th scope="col">Motor</th>
+                    <th scope="col">Precio</th>
+                    <!-- Agregar las columnas para los botones editar y eliminar -->
+                    <th scope="col">Editar</th>
+                    <th scope="col">Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="car:${carros}">  
+                    <th scope="row" th:text="${car.idCarro}" ></th> 
+                    <td th:text="${car.marca}"></td>
+                    <td th:text="${car.modelo}" ></td>
+                    <td th:text="${car.motor}" ></td>
+                    <td th:text="${car.precio}" ></td>
+                    <td>
+                        <a th:href="@{/vistas/carros/edit/}+${car.idCarro}" th:text="Editar" title="Editar Registro"></a>
+                    </td>
+                    <td>
+                        <a  th:href="@{/vistas/carros/delete/}+${car.idCarro}" th:text="Eliminar" title="Eliminar Registro"></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer th:replace="/plantilla/template::footer"></footer>
+    
+</body>
+</html>

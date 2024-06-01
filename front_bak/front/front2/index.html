@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Carros</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .button-group {
+            text-align: center;
+        }
+
+        #carTable {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #carTable td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Crear Carros</h1>
+        <form id="carForm">
+            <input type="hidden" id="carId">
+            <div class="form-group">
+                <label for="marca">Marca:</label>
+                <input type="text" id="marca" required>
+            </div>
+            <div class="form-group">
+                <label for="modelo">Modelo:</label>
+                <input type="text" id="modelo" required>
+            </div>
+            <div class="form-group">
+                <label for="motor">Motor:</label>
+                <input type="number" id="motor" required>
+            </div>
+            <div class="form-group">
+                <label for="precio">Precio:</label>
+                <input type="number" id="precio" required>
+            </div>
+            <div class="button-group">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-danger">Borrar</button>
+            </div>
+        </form>
+        <div id="message"></div>
+        <table id="carTable">
+            <tbody>
+                <!-- Rows will be inserted here dynamically -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
